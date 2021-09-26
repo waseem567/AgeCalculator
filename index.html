@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="This is an example of a meta description. This will often show up in search results." />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <title>Age Calculator</title>
+	<link rel="stylesheet" href="index.css">
+  <link
+   rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+   integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+   crossorigin="anonymous"
+   referrerpolicy="no-referrer"
+  />
+  <link
+   rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+   integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+   crossorigin="anonymous"
+   referrerpolicy="no-referrer"
+  />
+  <script src="convert.js"></script>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+ </head>
+ <body>
+  <!-- day and night button -->
+  <div class="dn_btn position-fixed end-0">
+   <div class="img">
+    <img src="https://v1.smallseotools.com/webimages/day_mode.svg" alt="day night" />
+   </div>
+   <div class="dn_text">Light Mode</div>
+   <div class="slider border" onclick="bg_n_clr()">
+    <div class="round"></div>
+   </div>
+  </div>
+  <!-- navbar -->
+  <div class="container-fluid border-bottom bg_light_black py-0" id="navbar_id">
+   <nav class="navbar navbar-expand-lg px-lg-5 bg_light_black py-0">
+    <a title="our brand" class="navbar-brand d-block pb-2 px-lg-5" id="brand_logo" href="#"><img src="Logo.png" alt="logo" height="31" width="100" /></a>
+
+    <a title="dark mode" href="#"><img class="img_sun" onclick="bg_n_clr()" src="https://v1.smallseotools.com/webimages/day_mode.svg" alt="sun" /></a>
+
+    <a title="user" href="#"><img class="img_user" src="Group 1198.png" alt="user" height="32" width="32" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_toggle_items" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- nav bar toggler button here -->
+    <div class="collapse navbar-collapse justify-content-end bg_light_black" id="navbar_toggle_items">
+     <ul class="navbar-nav fw-600 text_white">
+      <li class="nav-Items" onclick="show_tools()">
+       <a href="#" title="all tools" class="nav-link clr_white text-decoration-none">All Tools <img onclick="show_tools()" src="https://v1.smallseotools.com/webimages/drop_chevron.svg" alt="See all tools" /></a>
+      </li>
+      <li class="nav-Items"><a href="#" title="about us" class="nav-link clr_white">About us</a></li>
+      <li class="nav-Items"><a href="#" title="blog" class="nav-link clr_white">Blog</a></li>
+      <li class="nav-Items"><a href="#" title="contact us" class="nav-link clr_white">Contact us</a></li>
+     </ul>
+    </div>
+    <div class="d-flex" id="hide_div">
+     <div class="input_div d-flex py-2 px-3 mx-2 input_clr">
+      <input id="inp1" class="input_clr" type="text" placeholder="Enter a word to search" />
+      <a class="mx-2" title="Search" href="#"><i class="fa fa-search clr_white" aria-hidden="true"></i></a>
+     </div>
+     <div class="img_user_not_btn">
+      <img class="mx-1" src="Group 1198.png" alt="user" />
+      <div class="badge_not d-inline-block position-relative">
+       <img class="mx-1" src="Shape 1.png" alt="notification" />
+      </div>
+      <button class="border px-2 py-1 rounded-1 mx-1 clr_white lang_btn_bg"><img class="m-1" src="global.png" alt="Language" />English</button>
+     </div>
+    </div>
+   </nav>
+  </div>
+  <!-- all tools with click event  -->
+  <div class="container-fluid hide_tools">
+   <div class="row border-bottom m-0 day_night_dark">
+    <div class="col-md-11 p-3 text_white justify-content-center">
+     <a title="link" href="#" class="d-inline-flex justify-content-start p-5 mt-3">
+      <span class="tools_span"><img src="https://icons8.com/icon/38532/metallic-paint" alt="icon" width="20" height="20" /></span>
+
+      <span class="text_span fw-600 text-center m-1">Content Tools</span>
+     </a>
+     <a title="link" href="#" class="d-inline-flex justify-content-start p-5 mt-3">
+      <span class="tools_span"><img src="https://icons8.com/icon/38532/metallic-paint" alt="icon" width="20" height="20" /></span>
+
+      <span class="text_span fw-600 text-center m-1">Content Tools</span>
+     </a>
+     <a title="link" href="#" class="d-inline-flex justify-content-start p-5 mt-3">
+      <span class="tools_span"><img src="https://icons8.com/icon/38532/metallic-paint" alt="icon" width="20" height="20" /></span>
+
+      <span class="text_span fw-600 text-center m-1">Content Tools</span>
+     </a>
+     <a title="link" href="#" class="d-inline-flex justify-content-start p-5 mt-3">
+      <span class="tools_span"><img src="https://icons8.com/icon/38532/metallic-paint" alt="icon" width="20" height="20" /></span>
+
+      <span class="text_span fw-600 text-center m-1">Content Tools</span>
+     </a>
+     <a title="link" href="#" class="d-inline-flex justify-content-start p-5 mt-3">
+      <span class="tools_span"><img src="https://icons8.com/icon/38532/metallic-paint" alt="icon" width="20" height="20" /></span>
+
+      <span class="text_span fw-600 text-center m-1">Content Tools</span>
+     </a>
+     <a title="link" href="#" class="d-inline-flex justify-content-start p-5 mt-3">
+      <span class="tools_span"><img src="https://icons8.com/icon/38532/metallic-paint" alt="icon" width="20" height="20" /></span>
+
+      <span class="text_span fw-600 text-center m-1">Content Tools</span>
+     </a>
+     <a title="link" href="#" class="d-inline-flex justify-content-start p-5 mt-3">
+      <span class="tools_span"><img src="https://icons8.com/icon/38532/metallic-paint" alt="icon" width="20" height="20" /></span>
+
+      <span class="text_span fw-600 text-center m-1">Content Tools</span>
+     </a>
+     <a title="link" href="#" class="d-inline-flex justify-content-start p-5 mt-3">
+      <span class="tools_span"><img src="https://icons8.com/icon/38532/metallic-paint" alt="icon" width="20" height="20" /></span>
+
+      <span class="text_span fw-600 text-center m-1">Content Tools</span>
+     </a>
+     <a title="link" href="#" class="d-inline-flex justify-content-start p-5 mt-3">
+      <span class="tools_span"><img src="https://icons8.com/icon/38532/metallic-paint" alt="icon" width="20" height="20" /></span>
+
+      <span class="text_span fw-600 text-center m-1">Content Tools</span>
+     </a>
+     <a title="link" href="#" class="d-inline-flex justify-content-start p-5 mt-3">
+      <span class="tools_span"><img src="https://icons8.com/icon/38532/metallic-paint" alt="icon" width="20" height="20" /></span>
+
+      <span class="text_span fw-600 text-center m-1">Content Tools</span>
+     </a>
+     <a title="link" href="#" class="d-inline-flex justify-content-start p-5 mt-3">
+      <span class="tools_span"><img src="https://icons8.com/icon/38532/metallic-paint" alt="icon" width="20" height="20" /></span>
+
+      <span class="text_span fw-600 text-center m-1">Content Tools</span>
+     </a>
+     <a title="link" href="#" class="d-inline-flex justify-content-start p-5 mt-3">
+      <span class="tools_span"><img src="https://icons8.com/icon/38532/metallic-paint" alt="icon" width="20" height="20" /></span>
+
+      <span class="text_span fw-600 text-center m-1">Content Tools</span>
+     </a>
+     <a title="link" href="#" class="d-inline-flex justify-content-start p-5 mt-3">
+      <span class="tools_span"><img src="https://icons8.com/icon/38532/metallic-paint" alt="icon" width="20" height="20" /></span>
+
+      <span class="text_span fw-600 text-center m-1">Content Tools</span>
+     </a>
+     <a title="link" href="#" class="d-inline-flex justify-content-start p-5 mt-3">
+      <span class="tools_span"><img src="https://icons8.com/icon/38532/metallic-paint" alt="icon" width="20" height="20" /></span>
+
+      <span class="text_span fw-600 text-center m-1">Content Tools</span>
+     </a>
+    </div>
+   </div>
+  </div>
+  <!-- our main section goes here -->
+  <div class="container-fluid bg_dark_black bg_light position-relative">
+   <div class="container">
+    <div class="row justify-content-center">
+     <div class="col-lg-8 mx-2">
+      <div class="row justify-content-center">
+       <div class="col-10">
+        <a title="visit our site" href="#">
+         <img class="d-block w-100 m-3" height="80" src="calccl.jpg" alt="our ad" />
+        </a>
+       </div>
+      </div>
+     </div>
+     <div class="col-lg-9 mx-2 border border-bottom-0 p-0 bg_light_black bg_white">
+      <div class="border-bottom p-2 fw-600 text-center w-100 m-0 clr_white fs-4">AGE CALCULATOR</div>
+      <p class="text-center fw-600 px-5 m-3 clr_white text-capitalize">
+       It calculates entered age in "Years, Months & Days" , "Months, Weeks & Days" , "Weeks, Days, Hours", "Days, Hours & Mins", "Hours, Mins & Sec", "Mins & Secs" & "Seconds" Patterns
+      </p>
+     </div>
+     <div class="col-lg-9 mx-2 border border-top-0 p-3 bg_white bg_light_black">
+      <div class="row justify-content-center mt-2">
+       <div class="col-lg-11 border bg_light py-4 px-5 mx-4 my-3 bg_light_black">
+        <div class="row justify-content-center">
+         <div class="col-lg-11 bg_white box_shad m-md-3 bg_light_black border pb-2">
+          <div class="text-center m-4">
+           <div class="text-center fw-600 m-2 mb-3 clr_white"><img height="20px" width="20px" class="mx-2" src="https://img.icons8.com/officexs/50/000000/calendar.png" alt="calender" />Select Your Date Of Birth</div>
+           <!-- day button  -->
+           <div class="row">
+            <div class="col-lg-3 p-1">
+             <select class="btn btn-lg w-100 rounded-0 border fw-600 fs-6 w-50 clr_white bg_dark_black" id="day_btn">
+              <option value="0" id="f_day">DD</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+              <option value="30">30</option>
+              <option value="31">31</option>
+             </select>
+            </div>
+            <!-- month button -->
+            <div class="col-lg-6 p-1">
+             <select class="btn btn-lg w-100 rounded-0 border fw-600 fs-6 w-50 clr_white bg_dark_black" id="month_btn">
+              <option value="0" id="f_month">MM</option>
+              <option value="1">January</option>
+              <option value="2">Febraury</option>
+              <option value="3">March</option>
+              <option value="4">April</option>
+              <option value="5">May</option>
+              <option value="6">June</option>
+              <option value="7">July</option>
+              <option value="8">August</option>
+              <option value="9">September</option>
+              <option value="10">October</option>
+              <option value="11">November</option>
+              <option value="12">December</option>
+             </select>
+            </div>
+            <div class="col-lg-3 p-1">
+             <!-- year button -->
+             <select class="btn btn-lg w-100 rounded-0 border fw-600 fs-6 clr_white bg_dark_black" id="year_btn">
+              <option id="f_year" value="0">YYYY</option>
+              <option value="1999">1999</option>
+              <option value="2000">2000</option>
+              <option value="2001">2001</option>
+              <option value="2002">2002</option>
+              <option value="2003">2003</option>
+              <option value="2004">2004</option>
+              <option value="2005">2005</option>
+              <option value="2006">2006</option>
+              <option value="2007">2007</option>
+              <option value="2008">2008</option>
+              <option value="2009">2009</option>
+              <option value="2010">2010</option>
+              <option value="2011">2011</option>
+              <option value="2012">2012</option>
+              <option value="2013">2013</option>
+              <option value="2014">2014</option>
+              <option value="2015">2015</option>
+              <option value="2016">2016</option>
+              <option value="2017">2017</option>
+              <option value="2018">2018</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+             </select>
+            </div>
+           </div>
+          </div>
+          <div class="row d-flex justify-content-center align-items-center">
+           <div class="col-lg-12 border-top bg-">
+            <div class="text-center m-4">
+             <div class="text-center fw-600 m-2 mb-3 clr_white"><img height="20px" width="20px" class="mx-2" src="https://img.icons8.com/officexs/50/000000/calendar.png" alt="calender" />Today's Date</div>
+             <div class="row">
+              <div class="col-lg-3 p-1">
+               <select class="btn btn-lg rounded-0 border fw-600 fs-6 w-100 clr_white bg_dark_black">
+                <option id="day">DD</option>
+               </select>
+              </div>
+              <div class="col-lg-6 p-1">
+               <select class="btn btn-lg rounded-0 border fw-600 fs-6 w-100 clr_white bg_dark_black">
+                <option id="month">MM</option>
+               </select>
+              </div>
+              <div class="col-md-3 p-1">
+               <select class="btn btn-lg rounded-0 border fw-600 fs-6 px-3 w-100 clr_white bg_dark_black">
+                <option id="year">YYYY</option>
+               </select>
+              </div>
+             </div>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="text-capitalize text-center fw-600 px-5 py-5 clr_white">
+       The age of a person can be counted differently in different cultures. This calculator is based on the most common age system. In this system, age grows at the birthday. For example, the age of a person that has lived for 3 years and
+       11 months is 3 and the age will turn to 4 at his/her next birthday one month later. Most western countries use this age system.
+      </div>
+      <div class="row justify-content-center">
+       <div class="col-lg-12 text-center my-2">
+        <button class="btn btn-lg btn-danger px-4 rounded-0 py-2 fw-600 fs-6 m-1" onclick="reset()">Reset</button>
+        <button class="btn btn-lg btn-primary px-5 rounded-0 py-2 fw-600 fs-6 m-1" id="calc_btn">Calculate</button>
+        <div class="text-capitalize text-center fw-600 px-5 py-3 clr_white">
+         In some cultures, age is expressed by counting years with or without including the current year. For example, one person who is twenty years old is the same as one person who is in the twenty-first year of his/her life. In one of
+         the traditional Chinese age systems, people are born at age 1 and the age grows up at the Traditional Chinese New Year instead of birthday. For example, if one baby was born just one day before the Traditional Chinese New Year, 2
+         days later, the baby will be at age 2 even though he/she is only 2 days old.
+        </div>
+        <div class="text-capitalize text-center fw-600 px-5 py-3 clr_white">
+         In some situations, the months and days result of this age calculator may be confusing, especially when the starting date is the end of a month. For example, we all count Feb. 20 to March 20 to be one month. However, there are two
+         ways to calculate the age from Feb. 28, 2015 to Mar. 31, 2015. If thinking Feb. 28 to Mar. 28 as one month, then the result is one month and 3 days. If thinking both Feb. 28 and Mar. 31 as the end of the month, then the result is
+         one month. Both calculation results are reasonable. Similar situations exist for dates like Apr. 30 to May 31, May 30 to June 30, etc. The confusion comes from the uneven number of days in different months. In our calculation, we
+         used the former method.
+        </div>
+       </div>
+      </div>
+      <div class="row">
+       <div class="col-lg-12 mt-2">
+        <p class="text-center fw-600 fs-5 clr_white">Availble On</p>
+        <p class="text-center">
+         <button class="btn btn-dark py-1 fw-600 rounded-1 m-2 text-white"><img id="gPlay" src="google-play.png" alt="gPlay" height="20px" width="20px" />Google Play</button>
+         <button class="btn btn-dark py-1 fw-600 rounded-1 m-2 text-white"><img id="gPlay" src="google-play.png" alt="gPlay" height="20px" width="20px" />Google Play</button>
+         <button class="btn btn-dark py-1 fw-600 rounded-1 m-2 text-white"><img id="gPlay" src="google-play.png" alt="gPlay" height="20px" width="20px" />Google Play</button>
+        </p>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="row">
+     <div class="col text-center fs-5 fw-bolder my-3 clr_white">RESULTS</div>
+    </div>
+    <div class="row justify-content-center">
+     <div class="col-lg-9 border rounded-0 p-3 bg_white bg_new_black">
+      <div class="row p-3">
+       <div class="col-lg-5 border py-3 bg_gray bg_dark_black">
+        <p class="text-center fw-600 m-auto clr_white">Your Age : <span class="fs-5 fw-600 clr_white" id="show_year">0</span></p>
+       </div>
+       <div class="col-lg-7 border py-3 bg_gray bg_dark_black">
+        <p class="text-center m-auto fw-600 clr_white">Your born at : <span class="fs-5 fw-600 clr_white" id="show_dob">date of birth</span></p>
+       </div>
+      </div>
+      <div class="row px-3 mt-1 mb-0">
+       <div class="col-4 fw-600 border py-3 bg_light text-center bg_dark_black clr_white">Your current age is</div>
+       <div class="col-8 border py-3 text-center fw-600 text-primary bg_light_black"><span id="year_1" class="clr_white"></span> years, <span id="month_1" class="clr_white"></span>months, <span id="day_1" class="clr_white"></span>days</div>
+      </div>
+      <div class="row px-3 mt-1 mb-0">
+       <div class="col-4 fw-600 border py-3 bg_light text-center bg_dark_black clr_white">Age in Months is</div>
+       <div class="col-8 border py-3 text-center fw-600 text-primary bg_light_black"><span id="month6" class="clr_white"></span> months, <span id="week6" class="clr_white"></span>weeks, <span id="day6" class="clr_white"></span>days</div>
+      </div>
+      <div class="row px-3 mt-1 mb-0">
+       <div class="col-4 fw-600 border py-3 bg_light text-center bg_dark_black clr_white">Age in weeks is</div>
+       <div class="col-8 border py-3 text-center fw-600 text-primary bg_light_black"><span id="week5" class="clr_white"></span> weeks, <span id="day5" class="clr_white"></span>days, <span id="hour5" class="clr_white"></span>hours</div>
+      </div>
+      <div class="row px-3 mt-1 mb-0">
+       <div class="col-4 fw-600 border py-3 bg_light text-center bg_dark_black clr_white">Age in days is</div>
+       <div class="col-8 border py-3 text-center fw-600 text-primary bg_light_black"><span id="day4" class="clr_white"></span> days, <span id="hour4" class="clr_white"></span>hours, <span id="min4" class="clr_white"></span>minutes</div>
+      </div>
+      <div class="row px-3 mt-1 mb-0">
+       <div class="col-4 fw-600 border py-3 bg_light text-center bg_dark_black clr_white">Age in hours is</div>
+       <div class="col-8 border py-3 text-center fw-600 text-primary bg_light_black">
+        <span id="hour3" class="clr_white"></span> hours, <span id="min3" class="clr_white"></span>minutes, <span id="second3" class="clr_white"></span>seconds
+       </div>
+      </div>
+      <div class="row px-3 mt-1 mb-0">
+       <div class="col-4 fw-600 border py-3 bg_light text-center bg_dark_black clr_white">Age in minutes is</div>
+       <div class="col-8 border py-3 text-center fw-600 text-primary bg_light_black"><span id="min_2" class="clr_white"></span> minutes, <span id="second_1" class="clr_white"></span>seconds,</div>
+      </div>
+      <div class="row px-3 mt-1 mb-0">
+       <div class="col-4 fw-600 border py-3 bg_light text-center bg_dark_black clr_white">Age in seconds is</div>
+       <div class="col-8 border py-3 text-center fw-600 text-primary bg_light_black"><span class="clr_white" id="seconds_end" class="clr_white"></span>seconds</div>
+      </div>
+     </div>
+    </div>
+    <div class="row justify-content-center">
+     <div class="col-lg-7 bg_light_black border rounded-0 p-3 bg_gray d-flex justify-content-center align-items-center">
+      <div class="text-center w-25 fw-600 fs-5 clr_white">FeedBack</div>
+      <div class="w-75">
+       <input class="w-100 border-0 bg_light_input" type="text" id="h_input" />
+      </div>
+      <div class="w-25 text-center d-flex justify-content-start">
+       <button type="submit" class="btn btn-success rounded-0 p-2">Submit</button>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="owl-carousel owl-theme p-5 bg_light_black">
+   <div class="item">
+    <a title="carousel items" href="#">
+     <img src="1.png" alt="carousel img" />
+    </a>
+   </div>
+   <div class="item">
+    <a title="carousel items" href="#">
+     <img src="2.png" alt="carousel img" />
+    </a>
+   </div>
+   <div class="item">
+    <a title="carousel items" href="#"><img src="3.png" alt="carousel img" /></a>
+   </div>
+   <div class="item">
+    <a title="carousel items" href="#"><img src="4.png" alt="carousel img" /></a>
+   </div>
+   <div class="item">
+    <a title="carousel items" href="#"><img src="5.png" alt="carousel img" /></a>
+   </div>
+   <div class="item">
+    <a title="carousel items" href="#"><img src="6.png" alt="carousel img" /></a>
+   </div>
+   <div class="item">
+    <a title="carousel items" href="#"><img src="1.png" alt="carousel img" /></a>
+   </div>
+   <div class="item">
+    <a title="carousel items" href="#"><img src="6.png" alt="carousel img" /></a>
+   </div>
+   <div class="item">
+    <a title="carousel items" href="#"><img src="5.png" alt="carousel img" /></a>
+   </div>
+   <div class="item">
+    <a title="carousel items" href="#"><img src="4.png" alt="carousel img" /></a>
+   </div>
+   <div class="item">
+    <a title="carousel items" href="#"><img src="3.png" alt="carousel img" /></a>
+   </div>
+   <div class="item">
+    <a title="carousel items" href="#"><img src="2.png" alt="carousel img" /></a>
+   </div>
+  </div>
+	<div class="container-fluid bg_light_black">
+  <div class="container">
+   <div class="text-center fw-bolder fs-1 clr_white">Subscribe Menu</div>
+   <div class="row justify-content-between">
+    <div class="col-lg-2">
+     <div class="text-center fw_600 border-bottom clr_white">Did you find me useful?</div>
+     <div class="border py-2 my-3 rounded-3">
+      <div class="text-center my-5"><i class="far fa-thumbs-up ts_30 clr_white"></i></div>
+      <div class="d-flex justify-content-center align-content-center fw-600 clr_white">
+       <div class="w-25 border-bottom mb-2 mx-2"></div>
+       OR
+       <div class="w-25 border-bottom mb-2 mx-2"></div>
+      </div>
+      <div class="text-center my-5"><i class="far fa-thumbs-down dis_like clr_white"></i></div>
+     </div>
+    </div>
+    <div class="col-lg-6">
+     <div class="text-center fw_600 border-bottom clr_white">Would you like to follow us?</div>
+     <label class="fw-600 mt-3 clr_white" for="#">Email</label>
+     <div class="mt-1"><input class="rounded-0 border w-100 py-2 clr_white" type="text" placeholder="Enter email here to subscribe our newsletter...." /></div>
+     <div class="my-4 clr_white">
+      Typically, “subscribe” is used to describe the monthly payment of a service. However, subscribing to a channel on YouTube does not require payment. If you like a channel's content, you can consider subscribing to it to stay updated on
+      their latest videos
+     </div>
+     <div class="text-center my-2"><button type="submit" class="btn btn-success fw-600 text-white rounded-0 w-25">Subscribe</button></div>
+    </div>
+   </div>
+  </div>
+</div>
+  <p class="text-center py-2 m-0 clr_white bg-dark text-white">Copyright © 2012-2021 by <a href="#" class="text-white">AgeCalculator.com</a> All Rights Reserved.</p>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script
+   src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+   integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+   crossorigin="anonymous"
+   referrerpolicy="no-referrer"
+  ></script>
+  <script>
+   var light;
+   function bg_n_clr() {
+    light = !light;
+    if (light) {
+     $(".round").css({ "margin-left": "16px", background: "#ff4747" });
+     $(".slider").css({ background: "rgb(61, 61, 63)", border: "none" });
+     $(".dn_btn").css({ background: "black", color: "white" });
+     $(".img img").attr("src", "https://img.icons8.com/emoji/48/000000/crescent-moon-emoji.png");
+     $(".bg_light_black").css({ background: "#3d3d3f" });
+     $(".bg_dark_black").css({ background: "#2a2a2e" });
+     $(".clr_white").css({ color: "white" });
+     $(".box_shad").css({ boxShadow: "none" });
+     $(".bg_new_black").css({ background: "#100c08" });
+     $(".bg_light_input").css({ background: "#888b8e" });
+     $(".border_none").css({ borderColor: "black" });
+     $(".lang_btn_bg").css({ background: "black", color: "white", border: "none" });
+     $("option").css({ background: "#888b8e" });
+    } else {
+     $(".round").css({ "margin-left": "2px", background: "white" });
+     $(".dn_btn").css({ background: "white", color: "black" });
+     $(".img img").attr("src", "https://v1.smallseotools.com/webimages/day_mode.svg");
+     $(".slider").css({ background: "rgb(182 187 193)" });
+     $(".bg_light_black").css({ background: "white" });
+     $(".bg_dark_black").css({ background: "#F6F8FA" });
+     $(".clr_white").css({ color: "black" });
+     $(".img_sun").attr("src", "https://v1.smallseotools.com/webimages/day_mode.svg");
+     $(".bg_new_black").css({ background: "white" });
+     $(".bg_light_input").css({ background: "white" });
+     $(".border_none").css({ border: "unset" });
+     $(".lang_btn_bg").css({ background: "#f0f3f6", color: "black", fontWeight: "600" });
+    }
+   }
+   var open;
+   function show_tools() {
+    open = !open;
+    if (!open) {
+     $(".hide_tools").css({ display: "unset" });
+    } else {
+     $(".hide_tools").css("display", "none");
+    }
+   }
+   var a = new Date();
+   document.getElementById("year").innerHTML = a.getFullYear();
+   document.getElementById("day").innerHTML = a.getDate();
+   var month_get = a.getMonth();
+   month_get += 1;
+   if (month_get === 1) {
+    document.getElementById("month").innerHTML = "January";
+   } else if (month_get === 2) {
+    document.getElementById("month").innerHTML = "Febraury";
+   } else if (month_get === 3) {
+    document.getElementById("month").innerHTML = "March";
+   } else if (month_get === 4) {
+    document.getElementById("month").innerHTML = "April";
+   } else if (month_get === 5) {
+    document.getElementById("month").innerHTML = "May";
+   } else if (month_get === 6) {
+    document.getElementById("month").innerHTML = "June";
+   } else if (month_get === 7) {
+    document.getElementById("month").innerHTML = "July";
+   } else if (month_get === 8) {
+    document.getElementById("month").innerHTML = "August";
+   } else if (month_get === 9) {
+    document.getElementById("month").innerHTML = "September";
+   } else if (month_get === 10) {
+    document.getElementById("month").innerHTML = "October";
+   } else if (month_get === 11) {
+    document.getElementById("month").innerHTML = "November";
+   } else {
+    document.getElementById("month").innerHTML = "December";
+   }
+
+   $("#calc_btn").click(function y_m_d() {
+    // showing date of birth
+
+    var yearResult = (month_born = year_user = month_user = month_text = day_user = year_pres = month_pres = day_pres = monthResult = dayResult = 0);
+    year_user = document.getElementById("year_btn").value;
+    month_user = $("#month_btn").val();
+    month_born = document.getElementById("month_btn");
+    day_user = document.getElementById("day_btn").value;
+    year_pres = document.getElementById("year").innerHTML;
+    month_pres = 1 + a.getMonth();
+    day_pres = a.getDate();
+
+    month_text = $("#month_btn option:selected").text();
+    if (year_user === "0" && month_user === "0" && day_user === "0") {
+     $("#day_btn , #month_btn , #year_btn").css("background", "red");
+    } else {
+     document.getElementById("show_dob").innerText = day_user + " " + month_text + "," + " " + year_user;
+     $("#day_btn , #month_btn , #year_btn").css("background", "none");
+     yearResult = year_pres - year_user;
+     monthResult = month_pres - month_user;
+     if (day_pres > day_user) dayResult = day_pres - day_user;
+     else dayResult = day_user - day_pres;
+     document.getElementById("show_year").innerText = yearResult + " Years";
+     document.getElementById("year_1").innerText = yearResult + "  ";
+     document.getElementById("month_1").innerText = monthResult + "  ";
+     document.getElementById("day_1").innerText = dayResult + "  ";
+     var seconds = 0;
+     seconds = yearResult * 365 * 24 * 60 * 60;
+     seconds = seconds + monthResult * 30.41 * 24 * 60 * 60;
+     seconds = seconds + dayResult * 24 * 60 * 60;
+     document.getElementById("seconds_end").innerText = Math.round(seconds) + "  ";
+     // min and seconds
+     var min = 0;
+     min = seconds / 60;
+     var sec = 0;
+     sec = seconds % 60;
+     document.getElementById("second_1").innerText = Math.round(sec) + "  ";
+     document.getElementById("min_2").innerText = Math.round(min) + "  ";
+     //hours min and seconds
+     var hour3 = (min3 = second3 = temp1 = 0);
+     hour3 = min / 60;
+     min3 = min % 60;
+     second3 = sec;
+     document.getElementById("hour3").innerText = Math.round(hour3) + "  ";
+     document.getElementById("min3").innerText = Math.round(min3) + "  ";
+     document.getElementById("second3").innerText = Math.round(second3) + "  ";
+     //days hours and mins
+     var day4 = (hour4 = min4 = 0);
+     day4 = hour3 / 24;
+     hour4 = hour3 % 24;
+     min4 = min3;
+     document.getElementById("day4").innerText = Math.round(day4) + "  ";
+     document.getElementById("hour4").innerText = Math.round(hour4) + "  ";
+     document.getElementById("min4").innerText = Math.round(min4) + "  ";
+     //week days and hours
+     var week5 = (day5 = hour5 = 0);
+     week5 = day4 / 7;
+     day5 = day4 % 7;
+     hour5 = hour4;
+     document.getElementById("week5").innerText = Math.round(week5) + "  ";
+     document.getElementById("day5").innerText = Math.round(day5) + "  ";
+     document.getElementById("hour5").innerText = Math.round(hour5) + "  ";
+     //months weeks and days
+     var month6 = (week6 = day6 = 0);
+     month6 = yearResult * 12;
+     month6 = month6 + monthResult;
+     week6 = dayResult / 7;
+     day6 = dayResult % 7;
+     document.getElementById("month6").innerText = Math.round(month6) + "  ";
+     document.getElementById("week6").innerText = Math.round(week6) + "  ";
+     document.getElementById("day6").innerText = Math.round(day6) + "  ";
+    }
+   });
+   function reset() {
+    // document.getElementById("day_btn").firstChild.innerHTML = "DD";
+    $("#day_btn option[id='f_day']").attr("selected", "selected");
+    $("#month_btn option[id='f_month']").attr("selected", "selected");
+    $("#year_btn option[id='f_year']").attr("selected", "selected");
+   }
+
+   $(".owl-carousel").owlCarousel({
+    loop: true,
+    margin: 10,
+    nav: true,
+    responsive: {
+     0: {
+      items: 1,
+     },
+     600: {
+      items: 3,
+     },
+     1000: {
+      items: 5,
+     },
+    },
+   });
+  </script>
+ </body>
+</html>
